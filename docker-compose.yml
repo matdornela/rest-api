@@ -4,22 +4,25 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-    image: randoli/rest-api
+    image: randoli-rest-api
     ports:
-    - '8080:8080'
-    - '5005:5005'
+      - '8080:8080'
+      - '5005:5005'
+    depends_on:
+      - postgresqldb
     environment:
       - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
       - PROFILE=dev
     links:
-      - db
-  db:
+      - postgresqldb
+  postgresqldb:
     image: postgres
     ports:
       - "5432:5432"
     restart: always
     environment:
-      POSTGRES_PASSWORD: DbPostgres!8232
+      POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+      POSTGRES_DB: randoli
     volumes:
-      - ./docker/pgdata:/var/lib/postgresql/data
+      - /var/postgresql/data:/var/lib/postgresql/data
