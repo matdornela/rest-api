@@ -21,12 +21,9 @@ public class Event implements Serializable {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false, unique = true, columnDefinition = "uuid")
-
+            strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(updatable = false, nullable = false)
     private UUID eventId;
-
     private String transId;
     private String transTms;
     private String rcNum;

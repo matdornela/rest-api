@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   rest-api:
     build:
@@ -24,5 +24,24 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: randoli
+      PGDATA: /var/lib/postgresql/data
     volumes:
-      - /var/postgresql/data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@randoli.com
+      POSTGRES_USER: postgres
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - "16543:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - postgresqldb
+    depends_on:
+      - postgresqldb
+volumes:
+  db-data:
+  pgadmin-data:

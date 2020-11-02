@@ -23,13 +23,7 @@ public class EventService {
     }
 
     public Event create(Event event) {
-        Event eventCreated;
-        try {
-            eventCreated = eventRepository.save(event);
-        } catch (Exception e) {
-            throw new EntityException();
-        }
-        return eventCreated;
+        return eventRepository.save(event);
     }
 
     public Optional<Event> getEventById(UUID id) {
@@ -61,7 +55,7 @@ public class EventService {
         try {
             eventById = getEventById(id);
         } catch (Exception e) {
-            throw new EntityException();
+            throw new EntityException(e);
         }
         eventById.ifPresent(eventRepository::delete);
     }
@@ -72,6 +66,9 @@ public class EventService {
         for (var record : batch.records) {
             var eventList = record.getEvent();
             for (var event : eventList) {
+                event.setTransId(record.getTransId());
+                event.setTransTms(record.getTransTms());
+                event.setClientId(record.getTransId());
                 create(event);
                 eventsCreated.add(event);
             }

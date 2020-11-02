@@ -18,11 +18,10 @@ public class Record {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false, unique = true, columnDefinition = "uuid")
+            strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(updatable = false, nullable = false)
     private UUID recordId;
-    private UUID transId;
+    private String transId;
     private String transTms;
     private long rcNum;
     private String clientId;

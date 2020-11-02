@@ -18,9 +18,8 @@ public class Batch {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false, unique = true, columnDefinition = "uuid")
+            strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(updatable = false, nullable = false)
     public UUID batchId;
     @OneToMany
     public List<Record> records;

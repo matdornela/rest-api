@@ -25,8 +25,8 @@ public class EventController {
         this.service = service;
     }
 
-    @PostMapping
     @ApiOperation(value = "Add a new event")
+    @PostMapping
     public Event create(@RequestBody Event event) {
         Event eventCreated;
         try {
@@ -37,8 +37,8 @@ public class EventController {
         return eventCreated;
     }
 
-    @GetMapping
     @ApiOperation(value = "Find all events")
+    @GetMapping
     public List<Event> findAll() {
         List<Event> listEvent;
         try {
@@ -49,8 +49,8 @@ public class EventController {
         return listEvent;
     }
 
+    @ApiOperation(value = "Find an event by ID ")
     @GetMapping(path = {"/{eventId}"})
-    @ApiOperation(value = "Find event by ID ")
     public Object findById(@PathVariable UUID eventId) {
         Optional<Event> event;
         try {
@@ -61,8 +61,8 @@ public class EventController {
         return event;
     }
 
-    @PutMapping(value = "/{eventId}")
     @ApiOperation(value = "Updates an event ")
+    @PutMapping(value = "/{eventId}")
     public Event update(@PathVariable("eventId") UUID eventId,
                         @RequestBody Event event) {
         Event eventUpdated;
@@ -75,8 +75,8 @@ public class EventController {
 
     }
 
-    @DeleteMapping(path = {"/{id}"})
     @ApiOperation(value = "Deletes an event")
+    @DeleteMapping(path = {"/{id}"})
     public void delete(@PathVariable("id") UUID eventId) {
         try {
             service.delete(eventId);
