@@ -49,7 +49,7 @@ public class EventController {
         return listEvent;
     }
 
-    @ApiOperation(value = "Find an event by ID ")
+    @ApiOperation(value = "Find an event by ID (UUID) ")
     @GetMapping(path = {"/{eventId}"})
     public Object findById(@PathVariable UUID eventId) {
         Optional<Event> event;
