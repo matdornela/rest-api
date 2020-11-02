@@ -21,12 +21,6 @@ public class EventController {
         this.service = service;
     }
 
-    @PostMapping("/import")
-    public List<Event> post() throws IOException {
-        return service.insertEventJson();
-    }
-
-    //CRUD
     @PostMapping
     public Event create(@RequestBody Event event) {
         Event eventCreated;
@@ -80,6 +74,11 @@ public class EventController {
         } catch (EntityException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
+    }
+
+    @PostMapping("/import")
+    public List<Event> post() throws IOException {
+        return service.insertEventJson();
     }
 
 }
