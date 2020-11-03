@@ -34,10 +34,9 @@ public class SwaggerConfig {
     }
 
     private ApiInfo metaInfo() {
-
         return new ApiInfo(
-                "API REST Randoli",
-                "API REST for executing CRUD operations and data import from JSON file.",
+                "REST API Randoli",
+                "REST API for performing CRUD operations and data import from JSON file.",
                 "1.0",
                 "Terms of Service",
                 new Contact("Mateus Mascarenhas", null,
