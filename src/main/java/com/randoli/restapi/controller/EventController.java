@@ -28,13 +28,7 @@ public class EventController {
     @ApiOperation(value = "Add a new event")
     @PostMapping
     public Event create(@RequestBody Event event) {
-        Event eventCreated;
-        try {
-            eventCreated = service.create(event);
-        } catch (EntityException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-        }
-        return eventCreated;
+        return service.create(event);
     }
 
     @ApiOperation(value = "Find all events")
@@ -89,6 +83,5 @@ public class EventController {
     public List<Event> post() throws IOException {
         return service.insertEventJson();
     }
-
 }
 
