@@ -41,7 +41,7 @@ public class SwaggerConfig {
                 "Terms of Service",
                 new Contact("Mateus Mascarenhas", null,
                         "mateusmascarenhas3@gmail.com"), null,
-                null, null);
+                "null", new ArrayList<>()
         );
     }
 }
