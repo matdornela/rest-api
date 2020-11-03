@@ -1,5 +1,6 @@
 package com.randoli.restapi.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Event implements Serializable {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
     @Column(updatable = false, nullable = false)
+    @ApiModelProperty(hidden=true, notes = "Event ID (UUID)")
     private UUID eventId;
     private String transId;
     private String transTms;

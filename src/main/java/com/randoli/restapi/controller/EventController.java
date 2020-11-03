@@ -43,7 +43,7 @@ public class EventController {
         return listEvent;
     }
 
-    @ApiOperation(value = "Find an event by ID (UUID) ")
+    @ApiOperation(value = "Find an event by ID (UUID)")
     @GetMapping(path = {"/{eventId}"})
     public Object findById(@PathVariable UUID eventId) {
         Optional<Event> event;
@@ -55,7 +55,7 @@ public class EventController {
         return event;
     }
 
-    @ApiOperation(value = "Updates an event ")
+    @ApiOperation(value = "Updates an event by ID (UUID)")
     @PutMapping(value = "/{eventId}")
     public Event update(@PathVariable("eventId") UUID eventId,
                         @RequestBody Event event) {
@@ -69,7 +69,7 @@ public class EventController {
 
     }
 
-    @ApiOperation(value = "Deletes an event")
+    @ApiOperation(value = "Deletes an event by ID (UUID)")
     @DeleteMapping(path = {"/{id}"})
     public void delete(@PathVariable("id") UUID eventId) {
         try {
